@@ -24,7 +24,7 @@ public static class Locator
     {
         var serviceType = typeof(T);
 
-        await WaitUntil<T>(() => services.ContainsKey(serviceType), serviceType, timeout);
+        await WaitUntil<T>(() => services.ContainsKey(serviceType), serviceType);
 
         if (services.TryGetValue(serviceType, out var requiredObject))
         {
@@ -57,7 +57,7 @@ public static class Locator
         }
     }
 
-    private static async Task WaitUntil<T>(Func<bool> condition, Type type, int timeout)
+    private static async Task WaitUntil<T>(Func<bool> condition, Type type)
     {
         if (!condition())
         {
