@@ -1,4 +1,4 @@
-# ServiceLocatorAsync
+# Asynchronous Service Locator
 Register your service by type value to the Service Locator dictionary.
 It will trigger an event that service was added. This event subscribers for callback.
 You can't register the same service twice.
