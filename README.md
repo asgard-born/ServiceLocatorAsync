@@ -5,7 +5,7 @@ You can't register the same service twice.<br />
 Asynchronously obtaining the service by type from dictionary.<br />
 You can sets a subscription to the event like a promise of adding a new service or stop the flow before it's received.<br />
 
-0. First of all we need to register service like this. Locator is static. I dont like an idea to make it singleton.
+__0. First of all we need to register service like this. Locator is static. I dont like an idea to make it singleton.
 ```csharp
 private void Awake()
 {
@@ -14,7 +14,7 @@ private void Awake()
 ```
 
 In client code we can obtain our service by two ways:<br />
-1. Getting as Task (raw) and setting callback method. We have more options here
+__1. Getting as Task (raw) and setting callback method. We have more options here
 ```csharp
 public class ClientCode : MonoBehaviour
 {
@@ -33,7 +33,7 @@ public class ClientCode : MonoBehaviour
 }
 
 ```
-   1.1. A more elegant way to collect feedback when we've got all the services.
+__1.1. A more elegant way to collect feedback when we've got all the services.
 ```csharp
 private void Start()
 {
