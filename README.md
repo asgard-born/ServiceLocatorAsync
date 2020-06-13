@@ -47,7 +47,7 @@ private void Start()
     tasksContainer.ContinueWith(task =>
     {
         isServicesObtained = true;
-        Debug.Log("all services successfully obtained");
+        Debug.Log("all services successfully loaded");
     });
 }
 ```
