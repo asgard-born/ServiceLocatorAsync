@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 1998093814}
   - component: {fileID: 1998093813}
   m_Layer: 0
-  m_Name: ClientCode
+  m_Name: ServicesManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -444,9 +444,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1998093812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4add606929c7aa94cbdb0b49d14499f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ea32fde69bf93248a777316b8f75848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AreServicesObtained: 0
 --- !u!4 &1998093814
 Transform:
   m_ObjectHideFlags: 0

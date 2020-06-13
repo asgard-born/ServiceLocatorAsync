@@ -1,4 +1,4 @@
-﻿namespace Services
+﻿namespace Examples.Services
 {
     using System.Threading.Tasks;
     using UnityEngine;

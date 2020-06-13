@@ -1,12 +1,12 @@
-﻿namespace Services
+﻿namespace Examples.Services
 {
     using System.Threading.Tasks;
     using UnityEngine;
 
-    public class Service4 : MonoBehaviour
+    public class Service1 : MonoBehaviour
     {
-        public int delayMillSec = 3000;
-        public int field        = 777;
+        public int delayMillSec = 4000;
+        public int field        = 99;
 
         private async void Awake()
         {

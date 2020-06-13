@@ -9,8 +9,7 @@ public static class Locator
 {
     private static Dictionary<Type, object> services = new Dictionary<Type, object>();
 
-    private const int timeout        = 10000;
-    private const int eternalTimeout = -1;
+    private const int timeout = 10000;
 
     private static event Action<Type> OnServiceAdded;
 
@@ -23,14 +22,16 @@ public static class Locator
     /// <exception cref="NullReferenceException"></exception>
     public static async Task<T> GetServiceAsync<T>()
     {
-        await WaitUntil<T>(() => services.ContainsKey(typeof(T)), typeof(T), timeout);
+        var serviceType = typeof(T);
 
-        if (services.TryGetValue(typeof(T), out var requiredObject))
+        await WaitUntil<T>(() => services.ContainsKey(serviceType), serviceType, timeout);
+
+        if (services.TryGetValue(serviceType, out var requiredObject))
         {
             return (T) requiredObject;
         }
 
-        throw new NullReferenceException($"Cannot find {typeof(T)} service");
+        throw new NullReferenceException($"Cannot find {serviceType.Name} service");
     }
 
     /// <summary>
@@ -56,7 +57,7 @@ public static class Locator
         }
     }
 
-    private static async Task WaitUntil<T>(Func<bool> condition, Type type, int timeout = eternalTimeout)
+    private static async Task WaitUntil<T>(Func<bool> condition, Type type, int timeout)
     {
         if (!condition())
         {
