@@ -5,6 +5,13 @@ You can't register the same service twice.<br />
 Asynchronously obtaining the service by type from dictionary.<br />
 You can sets a subscription to the event like a promise of adding a new service or stop the flow before it's received.<br />
 
+Benefits:
+<ul>
+<li>You make subscription on adding service</li>
+<li>Avoiding problems, when we have many singletones and time we getting them is earlier than time they are created</li>
+<li>You can call the service even in Awake() method, not worrying about NullReferenceException (if timeout inside the Locator allows you to wait)</li>
+</ul>
+
 0. First of all we need to register service like this. Locator is static. I dont like an idea to make it singleton.
 ```csharp
 private void Awake()
@@ -73,9 +80,3 @@ private async void Start()
     isServicesObtained = true;
 }
 ```
-
-Benefits:<br />
-<ul>
-<li>You make subscription on adding service</li><br />
-<li>Avoiding problems, when we have many singletones and time we getting them is earlier than time they are created</li><br />
-<li>You can call the service even in Awake() method, not worrying about NullReferenceException (if timeout inside the Locator allows you to wait)</li>
