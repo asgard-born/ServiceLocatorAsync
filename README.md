@@ -75,6 +75,6 @@ private async void Start()
 ```
 
 Benefits:
-  You make subscription on adding service
-  Avoiding problems, when we have many singletones and time we getting them is earlier than time they are created
+  You make subscription on adding service<br />
+  Avoiding problems, when we have many singletones and time we getting them is earlier than time they are created<br />
   You can call the service even in Awake() method, not worrying about NullReferenceException (if timeout inside the Locator allows you to wait)
