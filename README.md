@@ -28,10 +28,6 @@ public class ClientCode : MonoBehaviour
         task3.ContinueWith(task => Debug.Log(task.Result.field));
         task4.ContinueWith(task => Debug.Log(task.Result.field));
     }
-
-        // another variant is to wait service through await command
-        // it will stop the thread until the service will be obtained
-        // var task1 = await Locator.GetService<Service2>();
 }
 
 ```
