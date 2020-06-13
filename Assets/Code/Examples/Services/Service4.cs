@@ -13,7 +13,7 @@
             // For Testing
             await Task.Delay(delayMillSec);
 
-            Locator.RegisterIn(this);
+            Locator.Register(this);
         }
     }
 }

@@ -42,7 +42,7 @@ public static class Locator
     /// <param name="service"></param>
     /// <typeparam name="T"></typeparam>
     /// <exception cref="ArgumentException"></exception>
-    public static void RegisterIn<T>(T service)
+    public static void Register<T>(T service)
     {
         var serviceType = typeof(T);
 
