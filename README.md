@@ -5,13 +5,14 @@ You can't register the same service twice.
 Asynchronously obtaining the service by type from dictionary.
 You can sets a subscription to the event like a promise of adding a new service or stop the flow before it's received.
 
-0. First of all we need to register service like this. Locator is static. I dont like an idea to make it singletone.
+0. First of all we need to register service like this. Locator is static. I dont like an idea to make it singleton.
 ```csharp
 private void Awake()
 {
   Locator.RegisterIn(this);
 }
 ```
+
 In client code we can obtain our service by two ways:
 1. Getting as Task (raw) and setting callback method. We have more options here
 ```csharp
