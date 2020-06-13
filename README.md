@@ -31,7 +31,7 @@ public class ClientCode : MonoBehaviour
 }
 
 ```
- 1.1. A more elegant way to collect feedback when we got all the services.
+   1.1. A more elegant way to collect feedback when we got all the services.
 ```csharp
 private void Start()
 {
