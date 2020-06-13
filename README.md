@@ -7,7 +7,76 @@ You can sets a subscription to the event like a promise of adding a new service 
 
 ```csharp
 private void Awake()
-  {
-    Locator.RegisterIn(this);
-  }
+{
+  Locator.RegisterIn(this);
+}
 ```
+In client code we can obtain our service by two ways:
+1. Getting as Task (Raw) and setting callback method. We have more options here,
+```csharp
+public class ClientCode : MonoBehaviour
+{
+    private void Awake()
+    {
+        var task1 = Locator.GetServiceAsync<Service1>();
+        var task2 = Locator.GetServiceAsync<Service2>();
+        var task3 = Locator.GetServiceAsync<Service3>();
+        var task4 = Locator.GetServiceAsync<Service4>();
+
+        task1.ContinueWith(task => Debug.Log(task.Result.field));
+        task2.ContinueWith(task => Debug.Log(task.Result.field));
+        task3.ContinueWith(task => Debug.Log(task.Result.field));
+        task4.ContinueWith(task => Debug.Log(task.Result.field));
+    }
+
+        // another variant is to wait service through await command
+        // it will stop the thread until the service will be obtained
+        // var task1 = await Locator.GetService<Service2>();
+}
+
+```
+1.1 A more elegant way to collect feedback when we got all the services.
+```csharp
+private void Start()
+{
+    var task1 = Locator.GetServiceAsync<Service1>();
+    var task2 = Locator.GetServiceAsync<Service2>();
+    var task3 = Locator.GetServiceAsync<Service3>();
+    var task4 = Locator.GetServiceAsync<Service4>();
+
+    Task[] tasks = {task1, task2, task3, task4};
+
+    Task tasksContainer = Task.WhenAll(tasks);
+
+    tasksContainer.ContinueWith(task =>
+    {
+        isServicesObtained = true;
+        Debug.Log("all services successfully obtained");
+    });
+}
+```
+2. Another variant is to wait service through await command
+it will stop the thread until the service will be obtained
+```csharp
+private async void Start()
+{
+    var service1 = await Locator.GetServiceAsync<Service1>();
+    Debug.Log(service1.field);
+
+    var service2 = await Locator.GetServiceAsync<Service2>();
+    Debug.Log(service2.field);
+
+    var service3 = await Locator.GetServiceAsync<Service3>();
+    Debug.Log(service3.field);
+
+    var service4 = await Locator.GetServiceAsync<Service4>();
+    Debug.Log(service4.field);
+
+    isServicesObtained = true;
+}
+```
+
+Benefits:
+  You make subscription on adding service
+  Avoiding problems, when we have many singletones and time we getting them is earlier than time they are created
+  You can call the service even in Awake() method, not worrying about NullReferenceException (if timeout inside the Locator allows you to wait)
