@@ -5,7 +5,7 @@ You can't register the same service twice.<br />
 Asynchronously obtaining the service by type from dictionary.<br />
 You can sets a subscription to the event like a promise of adding a new service or stop the flow before it's received.<br />
 
-__0. First of all we need to register service like this. Locator is static. I dont like an idea to make it singleton.
+0. First of all we need to register service like this. Locator is static. I dont like an idea to make it singleton.
 ```csharp
 private void Awake()
 {
@@ -14,7 +14,7 @@ private void Awake()
 ```
 
 In client code we can obtain our service by two ways:<br />
-__1. Getting as Task (raw) and setting callback method. We have more options here
+1. Getting as Task (raw) and setting callback method. We have more options here
 ```csharp
 public class ClientCode : MonoBehaviour
 {
@@ -33,7 +33,7 @@ public class ClientCode : MonoBehaviour
 }
 
 ```
-__1.1. A more elegant way to collect feedback when we've got all the services.
+1.1. A more elegant way to collect feedback when we've got all the services.
 ```csharp
 private void Start()
 {
@@ -75,6 +75,7 @@ private async void Start()
 ```
 
 Benefits:<br />
-  You make subscription on adding service<br />
-  Avoiding problems, when we have many singletones and time we getting them is earlier than time they are created<br />
-  You can call the service even in Awake() method, not worrying about NullReferenceException (if timeout inside the Locator allows you to wait)
+<ul>
+<li>You make subscription on adding service</li><br />
+<li>Avoiding problems, when we have many singletones and time we getting them is earlier than time they are created</li><br />
+<li>You can call the service even in Awake() method, not worrying about NullReferenceException (if timeout inside the Locator allows you to wait)</li>
