@@ -1,9 +1,9 @@
 # Asynchronous Service Locator
-Register your service by type value to the Service Locator dictionary.
-It will trigger an event that service was added. This event subscribers for callback.
-You can't register the same service twice.
-Asynchronously obtaining the service by type from dictionary.
-You can sets a subscription to the event like a promise of adding a new service or stop the flow before it's received.
+Register your service by type value to the Service Locator dictionary.<br />
+It will trigger an event that service was added. This event subscribers for callback.<br />
+You can't register the same service twice.<br />
+Asynchronously obtaining the service by type from dictionary.<br />
+You can sets a subscription to the event like a promise of adding a new service or stop the flow before it's received.<br />
 
 0. First of all we need to register service like this. Locator is static. I dont like an idea to make it singleton.
 ```csharp
@@ -13,7 +13,7 @@ private void Awake()
 }
 ```
 
-In client code we can obtain our service by two ways:
+In client code we can obtain our service by two ways:<br />
 1. Getting as Task (raw) and setting callback method. We have more options here
 ```csharp
 public class ClientCode : MonoBehaviour
@@ -74,7 +74,7 @@ private async void Start()
 }
 ```
 
-Benefits:
+Benefits:<br />
   You make subscription on adding service<br />
   Avoiding problems, when we have many singletones and time we getting them is earlier than time they are created<br />
   You can call the service even in Awake() method, not worrying about NullReferenceException (if timeout inside the Locator allows you to wait)
