@@ -5,6 +5,7 @@ You can't register the same service twice.
 Asynchronously obtaining the service by type from dictionary.
 You can sets a subscription to the event like a promise of adding a new service or stop the flow before it's received.
 
+0. First of all we need to register service like this. Locator is static. I dont like an idea to make it singletone.
 ```csharp
 private void Awake()
 {
