@@ -19,7 +19,7 @@ private void Awake()
   // your delay must be no longer than timeout inside locator
   await Task.Delay(delayMillSec);
   
-  Locator.RegisterIn(this);
+  Locator.Register(this);
 }
 ```
 
