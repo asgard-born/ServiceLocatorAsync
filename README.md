@@ -12,7 +12,7 @@ private void Awake()
 }
 ```
 In client code we can obtain our service by two ways:
-1. Getting as Task (Raw) and setting callback method. We have more options here,
+1. Getting as Task (raw) and setting callback method. We have more options here
 ```csharp
 public class ClientCode : MonoBehaviour
 {
