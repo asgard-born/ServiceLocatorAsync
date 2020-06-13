@@ -16,6 +16,10 @@ Benefits:
 ```csharp
 private void Awake()
 {
+  // For Testing
+  // your delay must be no longer than timeout inside locator
+  await Task.Delay(delayMillSec);
+  
   Locator.RegisterIn(this);
 }
 ```
@@ -23,21 +27,19 @@ private void Awake()
 In client code we can obtain our service by two ways:<br />
 1. Getting as Task (raw) and setting callback method. We have more options here
 ```csharp
-public class ClientCode : MonoBehaviour
+private void Awake()
 {
-    private void Awake()
-    {
-        var task1 = Locator.GetServiceAsync<Service1>();
-        var task2 = Locator.GetServiceAsync<Service2>();
-        var task3 = Locator.GetServiceAsync<Service3>();
-        var task4 = Locator.GetServiceAsync<Service4>();
+    var task1 = Locator.GetServiceAsync<Service1>();
+    var task2 = Locator.GetServiceAsync<Service2>();
+    var task3 = Locator.GetServiceAsync<Service3>();
+    var task4 = Locator.GetServiceAsync<Service4>();
 
-        task1.ContinueWith(task => Debug.Log(task.Result.field));
-        task2.ContinueWith(task => Debug.Log(task.Result.field));
-        task3.ContinueWith(task => Debug.Log(task.Result.field));
-        task4.ContinueWith(task => Debug.Log(task.Result.field));
-    }
+    task1.ContinueWith(task => Debug.Log(task.Result.field));
+    task2.ContinueWith(task => Debug.Log(task.Result.field));
+    task3.ContinueWith(task => Debug.Log(task.Result.field));
+    task4.ContinueWith(task => Debug.Log(task.Result.field));
 }
+
 
 ```
 1.1. A more elegant way to collect feedback when we've got all the services.
@@ -55,7 +57,7 @@ private void Start()
 
     tasksContainer.ContinueWith(task =>
     {
-        isServicesObtained = true;
+        AreServicesObtained = true;
         Debug.Log("all services successfully loaded");
     });
 }
@@ -77,6 +79,6 @@ private async void Start()
     var service4 = await Locator.GetServiceAsync<Service4>();
     Debug.Log(service4.field);
 
-    isServicesObtained = true;
+    AreServicesObtained = true;
 }
 ```
