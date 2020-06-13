@@ -1,7 +1,9 @@
-﻿using System;
+﻿// created by Victor
+// https://github.com/VictorsGarden
+
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using UnityEngine;
 
 public static class Locator
 {
