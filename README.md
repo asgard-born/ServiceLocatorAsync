@@ -16,7 +16,6 @@ Benefits:
 ```csharp
 private void Awake()
 {
-  // For Testing
   // your delay must be no longer than timeout inside locator
   await Task.Delay(delayMillSec);
   
