@@ -15,7 +15,7 @@ public static class Locator
 
     /// <summary>
     /// Asynchronously obtaining the service by type from dictionary.
-    /// You can sets a subscription to the event like a promise of adding a new service or stop the flow before it's received.
+    /// You can set subscription to the adding new service event or stop the flow before it's received.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
